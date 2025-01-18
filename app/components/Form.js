@@ -364,7 +364,7 @@ export default function FormTabs() {
           }`}
           onClick={() => setActiveTab("Buy")}
         >
-          Buy
+          Buy Forex
         </button>
         <button
           className={`px-4 py-2 font-medium ${
@@ -374,7 +374,7 @@ export default function FormTabs() {
           }`}
           onClick={() => setActiveTab("Sell")}
         >
-          Sell
+          Sell Forex
         </button>
       </div>
 

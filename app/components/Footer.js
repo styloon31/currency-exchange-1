@@ -83,13 +83,12 @@ export default function Footer() {
             Rate | USD Exchange Rate | ZAR Exchange Rate
           </p>
         </div>
-        <div className="w-full flex items-center justify-center border-t-2 border-gray-400 mt-14 pt-4">
+        <div className="w-full flex-col md:flex-row flex items-center justify-center border-t-2 border-gray-400 mt-14 pt-4">
             <p>Privacy</p>
             <DotIcon />
             <p>Terms of Use</p>
             <DotIcon />
-            <Copyright />
-            <p>2025 7Janpath Forex</p>
+            <p className="flex items-center justify-center gap-2"> <Copyright /> 2025 7Janpath Forex</p>
         </div>  
       </div>
     </footer>

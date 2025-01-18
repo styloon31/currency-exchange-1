@@ -202,7 +202,7 @@ export default function FormTabs() {
 
           <div>
             <label className="flex items-center gap-2 text-gray-700 font-medium mb-1">
-              <Banknote /> Inr Amount
+              <Banknote /> INR Amount
             </label>
             <div className="flex flex-wrap items-center gap-2">
               <span className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg border">
@@ -222,7 +222,10 @@ export default function FormTabs() {
           </div>
 
           <div>
-            <label className="block text-gray-700 font-medium mb-1">Name</label>
+            <label className="flex items-center gap-2 text-gray-700 font-medium mb-1">
+              <UserPen />
+              Name
+            </label>
             <input
               type="text"
               value={name}
@@ -274,7 +277,7 @@ export default function FormTabs() {
           {/* INR Amount Field */}
           <div>
             <label className="flex items-center gap-2 text-gray-700 font-medium mb-1">
-              <Banknote /> Inr Amount
+              <Banknote /> INR Amount
             </label>
             <div className="flex flex-wrap items-center gap-2">
               <span className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg border">
@@ -355,7 +358,7 @@ export default function FormTabs() {
 
   return (
     <div className="max-w-4xl mx-auto p-6 sm:p-8 bg-white shadow-md border-4 rounded-3xl border-blue-400">
-      <div className="flex justify-center space-x-4 mb-6">
+      <div className="flex justify-center space-x-4 mb-6 border-b-2 border-blue-400">
         <button
           className={`px-4 py-2 font-medium ${
             activeTab === "Buy"

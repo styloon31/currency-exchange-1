@@ -3,6 +3,7 @@ import { useState } from "react";
 import { collection, addDoc } from "firebase/firestore"; // Firestore imports
 import Swal from "sweetalert2";
 import { db } from "../firebase";
+import { Banknote, LocateIcon, MapPin, Phone, UserPen } from "lucide-react";
 
 export default function FormTabs() {
   const [activeTab, setActiveTab] = useState("Buy"); // Active tab state
@@ -14,32 +15,33 @@ export default function FormTabs() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [city, setCity] = useState("");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const exchangeRates = {
-    USD: { rate: 86.70, symbol: "$" },
-  EUR: { rate: 88.80, symbol: "€" },
-  GBP: { rate: 107.50, symbol: "£" },
-  AUD: { rate: 53.90, symbol: "A$" },
-  CAD: { rate: 60.65, symbol: "C$" },
-  SGD: { rate: 63.65, symbol: "S$" },
-  JPY: { rate: 0.562, symbol: "¥" },
-  CHF: { rate: 95.50, symbol: "CHF" },
-  THB: { rate: 2.535, symbol: "฿" },
-  AED: { rate: 23.70, symbol: "د.إ" },
-  CNY: { rate: 12.35, symbol: "¥" },
-  MYR: { rate: 20.02, symbol: "RM" },
-  VND: { rate: 0.00380, symbol: "₫" },
-  IDR: { rate: 0.00573, symbol: "Rp" },
-  HKD: { rate: 11.62, symbol: "HK$" },
-  TRL: { rate: 3.00, symbol: "₺" },
-  NZD: { rate: 49.40, symbol: "NZ$" },
+    USD: { rate: 86.7, symbol: "$", flag: "https://flagcdn.com/us.svg" },
+    EUR: { rate: 88.8, symbol: "€", flag: "https://flagcdn.com/eu.svg" },
+    GBP: { rate: 107.5, symbol: "£", flag: "https://flagcdn.com/gb.svg" },
+    AUD: { rate: 53.9, symbol: "A$", flag: "https://flagcdn.com/au.svg" },
+    CAD: { rate: 60.65, symbol: "C$", flag: "https://flagcdn.com/ca.svg" },
+    SGD: { rate: 63.65, symbol: "S$", flag: "https://flagcdn.com/sg.svg" },
+    JPY: { rate: 0.562, symbol: "¥", flag: "https://flagcdn.com/jp.svg" },
+    CHF: { rate: 95.5, symbol: "CHF", flag: "https://flagcdn.com/ch.svg" },
+    THB: { rate: 2.535, symbol: "฿", flag: "https://flagcdn.com/th.svg" },
+    AED: { rate: 23.7, symbol: "د.إ", flag: "https://flagcdn.com/ae.svg" },
+    CNY: { rate: 12.35, symbol: "¥", flag: "https://flagcdn.com/cn.svg" },
+    MYR: { rate: 20.02, symbol: "RM", flag: "https://flagcdn.com/my.svg" },
+    VND: { rate: 0.0038, symbol: "₫", flag: "https://flagcdn.com/vn.svg" },
+    IDR: { rate: 0.00573, symbol: "Rp", flag: "https://flagcdn.com/id.svg" },
+    HKD: { rate: 11.62, symbol: "HK$", flag: "https://flagcdn.com/hk.svg" },
+    TRL: { rate: 3.0, symbol: "₺", flag: "https://flagcdn.com/tr.svg" },
+    NZD: { rate: 49.4, symbol: "NZ$", flag: "https://flagcdn.com/nz.svg" },
   };
 
-  const handleCurrencyChange = (e) => {
-    const currency = e.target.value;
+  const handleCurrencyChange = (currency) => {
     setSelectedCurrency(currency);
     setConversionRate(exchangeRates[currency].rate);
     resetAmounts();
+    setIsDropdownOpen(false);
   };
 
   const resetAmounts = () => {
@@ -123,14 +125,52 @@ export default function FormTabs() {
     }
   };
 
+  const renderCustomDropdown = () => (
+    <div className="relative">
+      <button
+        type="button"
+        className="px-4 py-2 border rounded-lg flex items-center justify-between w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
+        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+      >
+        <div className="flex items-center gap-2">
+          <img
+            src={exchangeRates[selectedCurrency].flag}
+            alt={`${selectedCurrency} flag`}
+            className="w-5 h-5"
+          />
+          <span>{selectedCurrency}</span>
+        </div>
+        <span>▼</span>
+      </button>
+      {isDropdownOpen && (
+        <div className="absolute mt-2 w-full bg-white border rounded-lg shadow-lg max-h-60 overflow-y-auto z-10">
+          {Object.keys(exchangeRates).map((currency) => (
+            <div
+              key={currency}
+              className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 cursor-pointer"
+              onClick={() => handleCurrencyChange(currency)}
+            >
+              <img
+                src={exchangeRates[currency].flag}
+                alt={`${currency} flag`}
+                className="w-5 h-5"
+              />
+              <span>{currency}</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+
   const renderForm = () => {
     if (activeTab === "Sell") {
       return (
         <form className="space-y-6" onSubmit={handleSubmit}>
           {/* Form fields for Sell */}
           <div>
-            <label className="block text-gray-700 font-medium mb-1">
-              Select City
+            <label className="flex gap-2 text-gray-700 font-medium mb-1 items-center">
+              <MapPin /> Select City
             </label>
             <select
               className="w-full px-4 py-2 shadow-md border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
@@ -142,8 +182,8 @@ export default function FormTabs() {
           </div>
 
           <div>
-            <label className="block text-gray-700 font-medium mb-1">
-              Forex Amount
+            <label className="flex items-center gap-2 text-gray-700 font-medium mb-1">
+              <Banknote /> Forex Amount
             </label>
             <div className="flex flex-wrap items-center gap-2">
               <span className="bg-gray-100 text-gray-700 font-mono px-4 py-2 rounded-lg border">
@@ -156,23 +196,13 @@ export default function FormTabs() {
                 placeholder="Forex Amount"
                 className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
               />
-              <select
-                value={selectedCurrency}
-                onChange={handleCurrencyChange}
-                className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
-              >
-                {Object.keys(exchangeRates).map((currency) => (
-                  <option key={currency} value={currency}>
-                    {currency}
-                  </option>
-                ))}
-              </select>
+              {renderCustomDropdown()}
             </div>
           </div>
 
           <div>
-            <label className="block text-gray-700 font-medium mb-1">
-              Inr Amount
+            <label className="flex items-center gap-2 text-gray-700 font-medium mb-1">
+              <Banknote /> Inr Amount
             </label>
             <div className="flex flex-wrap items-center gap-2">
               <span className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg border">
@@ -203,8 +233,8 @@ export default function FormTabs() {
           </div>
 
           <div>
-            <label className="block text-gray-700 font-medium mb-1">
-              Phone Number
+            <label className="flex items-center gap-2 text-gray-700 font-medium mb-1">
+              <Phone /> Phone Number
             </label>
             <input
               type="text"
@@ -229,8 +259,8 @@ export default function FormTabs() {
       return (
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div>
-            <label className="block text-gray-700 font-medium mb-1">
-              Select City
+            <label className="flex gap-2 text-gray-700 font-medium mb-1 items-center">
+              <MapPin /> Select City
             </label>
             <select
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
@@ -243,7 +273,9 @@ export default function FormTabs() {
 
           {/* INR Amount Field */}
           <div>
-            <label className="block text-gray-700 font-medium mb-1">Pay</label>
+            <label className="flex items-center gap-2 text-gray-700 font-medium mb-1">
+              <Banknote /> Inr Amount
+            </label>
             <div className="flex flex-wrap items-center gap-2">
               <span className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg border">
                 ₹
@@ -263,8 +295,8 @@ export default function FormTabs() {
 
           {/* Forex Amount Field */}
           <div>
-            <label className="block text-gray-700 font-medium mb-1">
-              Forex Amount
+            <label className="flex items-center gap-2 text-gray-700 font-medium mb-1">
+              <Banknote /> Forex Amount
             </label>
             <div className="flex flex-wrap items-center gap-2">
               <span className="bg-gray-100 text-gray-700 font-mono px-4 py-2 rounded-lg border">
@@ -277,22 +309,15 @@ export default function FormTabs() {
                 placeholder="Forex Amount"
                 className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
               />
-              <select
-                value={selectedCurrency}
-                onChange={handleCurrencyChange}
-                className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
-              >
-                {Object.keys(exchangeRates).map((currency) => (
-                  <option key={currency} value={currency}>
-                    {currency}
-                  </option>
-                ))}
-              </select>
+              {renderCustomDropdown()}
             </div>
           </div>
 
           <div>
-            <label className="block text-gray-700 font-medium mb-1">Name</label>
+            <label className="flex items-center gap-2 text-gray-700 font-medium mb-1">
+              <UserPen />
+              Name
+            </label>
             <input
               type="text"
               value={name}
@@ -303,8 +328,8 @@ export default function FormTabs() {
           </div>
 
           <div>
-            <label className="block text-gray-700 font-medium mb-1">
-              Phone Number
+            <label className="flex items-center gap-2 text-gray-700 font-medium mb-1">
+              <Phone /> Phone Number
             </label>
             <input
               type="text"

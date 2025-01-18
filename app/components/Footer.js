@@ -88,7 +88,7 @@ export default function Footer() {
             <DotIcon />
             <p>Terms of Use</p>
             <DotIcon />
-            <p className="flex items-center justify-center gap-2"> <Copyright /> 2025 7Janpath Forex</p>
+            <p className="flex items-center justify-center gap-2"> <Copyright />2025 7Janpath Forex</p>
         </div>  
       </div>
     </footer>

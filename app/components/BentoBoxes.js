@@ -10,7 +10,7 @@ export default function BentoBoxes() {
             width={500}
             height={500}
             alt="forexcard"
-            className="absolute h-[36%] md:h-full md:w-[50%] bottom-0  md:right-0 object-cover object-center"
+            className="absolute hidden md:block h-[36%] md:h-full md:w-[50%] bottom-0  md:right-0 object-cover object-center"
           />
           <div className="px-5 py-8 text-white flex flex-col gap-4">
             <div className="w-12 h-12 border border-white/40 p-1 rounded-lg">
@@ -22,7 +22,7 @@ export default function BentoBoxes() {
                 className="w-full h-full"
               />
             </div>
-            <h2 className="text-3xl font-allround-medium">Forex Cards</h2>
+            <h2 className="text-3xl font-Helvetica">Forex Cards</h2>
             <p className="text-lg max-w-xs font-inter text-white/70">
               A perfect solution for all your forex needs. Travel carefree
               without worrying about running out of cash!
@@ -35,7 +35,7 @@ export default function BentoBoxes() {
             width={500}
             height={500}
             alt="forexcard"
-            className="absolute h-[36%] md:h-full md:w-[50%] bottom-0  md:right-0 object-cover object-center"
+            className="absolute hidden md:block h-[36%] md:h-full md:w-[50%] bottom-0  md:right-0 object-cover object-center"
           />
           <div className="px-5 py-8 text-white flex flex-col gap-4">
             <div className="w-12 h-12 border border-white/40 p-1 rounded-lg">
@@ -47,7 +47,7 @@ export default function BentoBoxes() {
                 className="w-full h-full"
               />
             </div>
-            <h2 className="text-3xl font-allround-medium">Money Transfer</h2>
+            <h2 className="text-3xl font-Helvetica">Money Transfer</h2>
             <p className="text-lg max-w-xs font-inter text-white/70">
               Now international remittances are easier than ever. Send money to
               your loved ones abroad with the click of a button
@@ -74,7 +74,7 @@ export default function BentoBoxes() {
                 className="w-full h-full"
               />
             </div>
-            <h2 className="text-3xl font-allround-medium">Currency Exchange</h2>
+            <h2 className="text-3xl font-Helvetica">Currency Exchange</h2>
             <p className="text-lg max-w-md font-inter text-white/70">
               Whether you are planning a trip or just returned from one,
               we&apos;re here to handle your currency needs. Get access to the
@@ -94,7 +94,7 @@ export default function BentoBoxes() {
                 className="w-full h-full"
               />
             </div>
-            <h2 className="text-3xl font-allround-medium">Learn more about our products for your needs</h2>
+            <h2 className="text-3xl font-Helvetica">Learn more about our products for your needs</h2>
           </div>
         </div>
       </div>

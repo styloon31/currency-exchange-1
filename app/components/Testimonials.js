@@ -131,7 +131,7 @@ const Testimonials = () => {
                 height={500}
                 className="rounded-full object-cover w-20 h-20 mb-4"
               />
-              <h3 className="text-center font-allround-bold text-lg text-blue-900">
+              <h3 className="text-center font-Helvetica text-lg text-blue-900">
                 {tm.name}
                 <br />
               </h3>

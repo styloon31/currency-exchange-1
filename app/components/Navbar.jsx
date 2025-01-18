@@ -14,7 +14,7 @@ const Navbar = () => {
   const NavLinks = ({ mobile = false }) => {
     const linkClass = mobile
       ? "text-2xl text-gray-100 pt-10 font-bold hover:text-gray-400 hover:scale-105 transition-all active:text-gray-500"
-      : "text-gray-800  shadow-2xl drop-shadow-xl font-medium hover:text-blue-500 hover:scale-110 transition-all cursor-pointer pt-1 font-allround-medium";
+      : "text-gray-800  shadow-2xl drop-shadow-xl font-medium hover:text-blue-500 hover:scale-110 transition-all cursor-pointer pt-1 font-Helvetica";
 
     return (
       <>

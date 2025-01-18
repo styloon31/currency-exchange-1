@@ -17,11 +17,11 @@ export default function Sixth() {
               />
               <span>Your Travel Assistant</span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-allround-bold font-bold text-gray-800 mt-4 leading-tight">
+            <h2 className="text-4xl md:text-6xl font-Helvetica font-bold text-gray-800 mt-4 leading-tight">
               Why Choose Us?
             </h2>
             <div className="w-full h-full flex items-center justify-center">
-              <p className="text-gray-600 mt-2 font-Helvetica max-w-md text-sm md:text-base leading-relaxed">
+              <p className="text-gray-600 mt-2 font-inter max-w-md text-sm md:text-base leading-relaxed">
                 Choose 7Janpath Forex for the best exchange rates, reliable
                 service, and a seamless foreign exchange experience.
               </p>
@@ -33,10 +33,10 @@ export default function Sixth() {
             {/* Card 1 */}
             <div className="bg-gray-50 p-4 md:p-6 rounded-lg shadow-lg text-center border-blue-300 border-2">
               <div className="text-blue-400 text-3xl md:text-4xl mb-4">⚡</div>
-              <h3 className="font-bold text-2xl md:text-3xl font-allround-bold text-gray-800">
+              <h3 className="font-bold text-2xl md:text-3xl font-Helvetica text-gray-800">
                 Competitive Exchange Rates
               </h3>
-              <p className="text-gray-600 mt-4 font-Helvetica text-sm md:text-base leading-relaxed">
+              <p className="text-gray-600 mt-4 font-inter text-sm md:text-base leading-relaxed">
                 Get the best deals on a wide range of currencies, saving you
                 money on every transaction.
               </p>
@@ -45,10 +45,10 @@ export default function Sixth() {
             {/* Card 2 */}
             <div className="bg-gray-50 p-4 md:p-6 rounded-lg shadow-lg text-center border-blue-300 border-2">
               <div className="text-blue-400 text-3xl md:text-4xl mb-4">🏆</div>
-              <h3 className="font-bold text-2xl md:text-3xl font-allround-bold text-gray-800">
+              <h3 className="font-bold text-2xl md:text-3xl font-Helvetica text-gray-800">
                 Convenience at Your Doorstep
               </h3>
-              <p className="text-gray-600 mt-4 font-Helvetica text-sm md:text-base leading-relaxed">
+              <p className="text-gray-600 mt-4 font-inter text-sm md:text-base leading-relaxed">
                 Benefit from convenient options like home delivery and online
                 services to save you time and effort.
               </p>
@@ -57,10 +57,10 @@ export default function Sixth() {
             {/* Card 3 */}
             <div className="bg-gray-50 p-4 md:p-6 rounded-lg shadow-lg text-center border-blue-300 border-2">
               <div className="text-blue-400 text-3xl md:text-4xl mb-4">💼</div>
-              <h3 className="font-bold text-2xl md:text-3xl font-allround-bold text-gray-800">
+              <h3 className="font-bold text-2xl md:text-3xl font-Helvetica text-gray-800">
                 Trusted <span className="font-sans">&</span> Secure
               </h3>
-              <p className="text-gray-600 mt-4 font-Helvetica text-sm md:text-base leading-relaxed">
+              <p className="text-gray-600 mt-4 font-inter text-sm md:text-base leading-relaxed">
                 We are RBI approved company and we prioritize your security with
                 robust systems and compliance with all relevant regulations.
               </p>

@@ -88,7 +88,7 @@ export default function CForm() {
       onSubmit={handleSubmit}
       className="w-full md:mx-14 bg-white border-4 border-blue-400 p-6 rounded-lg shadow-lg flex flex-col items-center font-Helvetica"
     >
-      <h2 className="text-4xl font-allround-medium font-bold mb-4 text-gray-800">Get expert help</h2>
+      <h2 className="text-4xl font-Helvetica font-bold mb-4 text-gray-800">Get expert help</h2>
 
       {/* Name Input */}
       <div className="mb-4 w-full">

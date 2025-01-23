@@ -1,45 +1,70 @@
 "use client";
-import { useState } from "react";
-import { collection, addDoc } from "firebase/firestore"; // Firestore imports
+import { useEffect, useState } from "react";
+import { collection, addDoc, doc, getDoc } from "firebase/firestore"; // Firestore imports
 import Swal from "sweetalert2";
 import { db } from "../firebase";
-import { Banknote, LocateIcon, MapPin, Phone, UserPen } from "lucide-react";
+import { ArrowDownNarrowWide, ArrowDownToLine, ArrowUpToLine, Banknote, LocateIcon, MapPin, Phone, UserPen } from "lucide-react";
 
 export default function FormTabs() {
   const [activeTab, setActiveTab] = useState("Buy"); // Active tab state
-
+  const [exchangeRates, setExchangeRates] = useState({});
   const [inrAmount, setInrAmount] = useState("");
   const [forexAmount, setForexAmount] = useState("");
   const [selectedCurrency, setSelectedCurrency] = useState("USD");
   const [conversionRate, setConversionRate] = useState(86.27);
+  const [conversionRateSell, setConversionRateSell] = useState(86.27);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [city, setCity] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const exchangeRates = {
-    USD: { rate: 86.7, symbol: "$", flag: "https://flagcdn.com/us.svg" },
-    EUR: { rate: 88.8, symbol: "€", flag: "https://flagcdn.com/eu.svg" },
-    GBP: { rate: 107.5, symbol: "£", flag: "https://flagcdn.com/gb.svg" },
-    AUD: { rate: 53.9, symbol: "A$", flag: "https://flagcdn.com/au.svg" },
-    CAD: { rate: 60.65, symbol: "C$", flag: "https://flagcdn.com/ca.svg" },
-    SGD: { rate: 63.65, symbol: "S$", flag: "https://flagcdn.com/sg.svg" },
-    JPY: { rate: 0.562, symbol: "¥", flag: "https://flagcdn.com/jp.svg" },
-    CHF: { rate: 95.5, symbol: "CHF", flag: "https://flagcdn.com/ch.svg" },
-    THB: { rate: 2.535, symbol: "฿", flag: "https://flagcdn.com/th.svg" },
-    AED: { rate: 23.7, symbol: "د.إ", flag: "https://flagcdn.com/ae.svg" },
-    CNY: { rate: 12.35, symbol: "¥", flag: "https://flagcdn.com/cn.svg" },
-    MYR: { rate: 20.02, symbol: "RM", flag: "https://flagcdn.com/my.svg" },
-    VND: { rate: 0.0038, symbol: "₫", flag: "https://flagcdn.com/vn.svg" },
-    IDR: { rate: 0.00573, symbol: "Rp", flag: "https://flagcdn.com/id.svg" },
-    HKD: { rate: 11.62, symbol: "HK$", flag: "https://flagcdn.com/hk.svg" },
-    TRL: { rate: 3.0, symbol: "₺", flag: "https://flagcdn.com/tr.svg" },
-    NZD: { rate: 49.4, symbol: "NZ$", flag: "https://flagcdn.com/nz.svg" },
-  };
+  // const exchangeRates = {
+  //   USD: { rate: 86.7, symbol: "$", flag: "https://flagcdn.com/us.svg" },
+  //   EUR: { rate: 88.8, symbol: "€", flag: "https://flagcdn.com/eu.svg" },
+  //   GBP: { rate: 107.5, symbol: "£", flag: "https://flagcdn.com/gb.svg" },
+  //   AUD: { rate: 53.9, symbol: "A$", flag: "https://flagcdn.com/au.svg" },
+  //   CAD: { rate: 60.65, symbol: "C$", flag: "https://flagcdn.com/ca.svg" },
+  //   SGD: { rate: 63.65, symbol: "S$", flag: "https://flagcdn.com/sg.svg" },
+  //   JPY: { rate: 0.562, symbol: "¥", flag: "https://flagcdn.com/jp.svg" },
+  //   CHF: { rate: 95.5, symbol: "CHF", flag: "https://flagcdn.com/ch.svg" },
+  //   THB: { rate: 2.535, symbol: "฿", flag: "https://flagcdn.com/th.svg" },
+  //   AED: { rate: 23.7, symbol: "د.إ", flag: "https://flagcdn.com/ae.svg" },
+  //   CNY: { rate: 12.35, symbol: "¥", flag: "https://flagcdn.com/cn.svg" },
+  //   MYR: { rate: 20.02, symbol: "RM", flag: "https://flagcdn.com/my.svg" },
+  //   VND: { rate: 0.0038, symbol: "₫", flag: "https://flagcdn.com/vn.svg" },
+  //   IDR: { rate: 0.00573, symbol: "Rp", flag: "https://flagcdn.com/id.svg" },
+  //   HKD: { rate: 11.62, symbol: "HK$", flag: "https://flagcdn.com/hk.svg" },
+  //   TRL: { rate: 3.0, symbol: "₺", flag: "https://flagcdn.com/tr.svg" },
+  //   NZD: { rate: 49.4, symbol: "NZ$", flag: "https://flagcdn.com/nz.svg" },
+  // };
+
+  useEffect(() => {
+    // Fetch exchange rates from Firestore
+    const fetchExchangeRates = async () => {
+      try {
+        const docRef = doc(db, "exchange-rates", "rates"); // Replace "rates" with your document ID
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          const rates = docSnap.data();
+          setExchangeRates(rates);
+          setConversionRate(rates[selectedCurrency]?.buyRate || 0);
+          setConversionRateSell(rates[selectedCurrency]?.sellRate || 0);
+        } else {
+          console.error("No exchange rates found");
+        }
+      } catch (error) {
+        console.error("Error fetching exchange rates:", error);
+      }
+    };
+
+    fetchExchangeRates();
+  }, [selectedCurrency]);
 
   const handleCurrencyChange = (currency) => {
     setSelectedCurrency(currency);
-    setConversionRate(exchangeRates[currency].rate);
+    setConversionRate(exchangeRates[currency].buyRate);
+    setConversionRateSell(exchangeRates[currency].sellRate);
     resetAmounts();
     setIsDropdownOpen(false);
   };
@@ -129,18 +154,21 @@ export default function FormTabs() {
     <div className="relative">
       <button
         type="button"
-        className="px-4 py-2 border rounded-lg flex items-center justify-between w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
+        className="px-4 py-2 gap-2 border rounded-lg flex items-center justify-between w-full focus:outline-none focus:ring-2 focus:ring-darkGreen"
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
       >
         <div className="flex items-center gap-2">
           <img
-            src={exchangeRates[selectedCurrency].flag}
+            src={exchangeRates[selectedCurrency]?.flag}
             alt={`${selectedCurrency} flag`}
             className="w-5 h-5"
           />
           <span>{selectedCurrency}</span>
         </div>
-        <span>▼</span>
+        {isDropdownOpen?(
+          <span className=""><ArrowUpToLine /></span>
+        ):(<span className=""><ArrowDownToLine /></span>)}
+        
       </button>
       {isDropdownOpen && (
         <div className="absolute mt-2 w-full bg-white border rounded-lg shadow-lg max-h-60 overflow-y-auto z-10">
@@ -173,7 +201,7 @@ export default function FormTabs() {
               <MapPin /> Select City
             </label>
             <select
-              className="w-full px-4 py-2 shadow-md border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
+              className="w-full px-4 py-2 shadow-md border rounded-lg focus:outline-none focus:ring-2 focus:ring-darkGreen text-sm"
               value={city}
               onChange={(e) => setCity(e.target.value)}
             >
@@ -187,14 +215,14 @@ export default function FormTabs() {
             </label>
             <div className="flex flex-wrap items-center gap-2">
               <span className="bg-gray-100 text-gray-700 font-mono px-4 py-2 rounded-lg border">
-                {exchangeRates[selectedCurrency].symbol}
+                {exchangeRates[selectedCurrency]?.symbol}
               </span>
               <input
                 type="number"
                 value={forexAmount}
                 onChange={handleForexChange}
                 placeholder="Forex Amount"
-                className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
+                className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-darkGreen text-sm"
               />
               {renderCustomDropdown()}
             </div>
@@ -213,10 +241,10 @@ export default function FormTabs() {
                 value={inrAmount}
                 onChange={handleInrChange}
                 placeholder="INR Amount"
-                className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
+                className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-darkGreen text-sm"
               />
               <span className="text-gray-500 text-sm">
-                1 = ₹ {conversionRate}
+                1 = ₹ {conversionRateSell}
               </span>
             </div>
           </div>
@@ -231,7 +259,7 @@ export default function FormTabs() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Enter your Name"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-darkGreen text-sm"
             />
           </div>
 
@@ -244,14 +272,14 @@ export default function FormTabs() {
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="Enter your Phone Number"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-darkGreen text-sm"
             />
           </div>
 
           <div>
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition text-sm"
+              className="w-full bg-darkGreen text-white py-3 rounded-lg hover:bg-green-700transition text-sm"
             >
               Request a Callback
             </button>
@@ -266,7 +294,7 @@ export default function FormTabs() {
               <MapPin /> Select City
             </label>
             <select
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-darkGreen text-sm"
               value={city}
               onChange={(e) => setCity(e.target.value)}
             >
@@ -288,7 +316,7 @@ export default function FormTabs() {
                 value={inrAmount}
                 onChange={handleInrChange}
                 placeholder="INR Amount"
-                className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
+                className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-darkGreen text-sm"
               />
               <span className="text-gray-500 text-sm">
                 1 = ₹ {conversionRate}
@@ -303,14 +331,14 @@ export default function FormTabs() {
             </label>
             <div className="flex flex-wrap items-center gap-2">
               <span className="bg-gray-100 text-gray-700 font-mono px-4 py-2 rounded-lg border">
-                {exchangeRates[selectedCurrency].symbol}
+                {exchangeRates[selectedCurrency]?.symbol}
               </span>
               <input
                 type="number"
                 value={forexAmount}
                 onChange={handleForexChange}
                 placeholder="Forex Amount"
-                className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
+                className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-darkGreen text-sm"
               />
               {renderCustomDropdown()}
             </div>
@@ -326,7 +354,7 @@ export default function FormTabs() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Enter your Name"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-darkGreen text-sm"
             />
           </div>
 
@@ -339,14 +367,14 @@ export default function FormTabs() {
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="Enter your Phone Number"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-darkGreen text-sm"
             />
           </div>
 
           <div>
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition text-sm"
+              className="w-full bg-darkGreen text-white py-3 rounded-lg hover:bg-green-700 transition text-sm"
             >
               Request a Callback
             </button>
@@ -357,12 +385,13 @@ export default function FormTabs() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 sm:p-8 bg-white shadow-md border-4 rounded-3xl border-blue-400">
-      <div className="flex justify-center space-x-4 mb-6 border-b-2 border-blue-400">
+    
+    <div className="max-w-4xl mx-auto p-6 sm:p-8 bg-white shadow-md border-4 rounded-3xl border-darkGreen z-20">
+      <div className="flex justify-center space-x-4 mb-6 border-b-2 border-darkGreering-darkGreen">
         <button
           className={`px-4 py-2 font-medium ${
             activeTab === "Buy"
-              ? "text-blue-600 border-b-2 border-blue-600"
+              ? "text-darkGreen border-b-2 border-darkGreen"
               : "text-gray-600"
           }`}
           onClick={() => setActiveTab("Buy")}
@@ -372,7 +401,7 @@ export default function FormTabs() {
         <button
           className={`px-4 py-2 font-medium ${
             activeTab === "Sell"
-              ? "text-blue-600 border-b-2 border-blue-600"
+              ? "text-darkGreen border-b-2 border-darkGreen"
               : "text-gray-600"
           }`}
           onClick={() => setActiveTab("Sell")}

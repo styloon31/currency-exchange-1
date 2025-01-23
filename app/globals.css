@@ -2,13 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
+body {
   width: screen;
   overflow-x: hidden;
   box-sizing: border-box;
 }
 
-@layer base{
+@layer base {
   @font-face {
     font-family: "allround-bold";
     src: url("/Fonts/allround-bold.ttf") format("truetype");
@@ -28,5 +28,12 @@ body{
   @font-face {
     font-family: "Sauce-Tomato";
     src: url("/Fonts/Sauce-Tomato.ttf") format("truetype");
+  }
+}
+
+@layer utilities {
+  .gradientBg {
+    background-color: #004e42;
+    background-image: linear-gradient(43deg, #004e42 0%, #ffffff 100%);
   }
 }

@@ -15,6 +15,10 @@ export default {
         "Sauce-Tomato": ["Sauce-Tomato", "sans-serif"],
         inter: ['Inter', 'sans-serif'],
       },
+      colors:{
+        darkGreen:"#004E42",
+        lightGreen:"#A8DF8E",
+      }
     },
   },
   plugins: [],

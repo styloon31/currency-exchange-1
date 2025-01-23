@@ -3,7 +3,7 @@ import CForm from "./CForm";
 
 export default function Seventh() {
   return (
-    <section className="h-dvh w-screen overflow-x-hidden relative bg-blue-600 bg-cover bg-center">
+    <section className="h-dvh w-screen overflow-x-hidden relative bg-darkGreen bg-cover bg-center">
       <div className="grid grid-cols-1 md:grid-cols-2 w-full h-full px-6 md:px-20">
         {/* Left Content */}
         <div className="col-span-1 w-full h-full flex flex-col text-white justify-center gap-6 sm:gap-8 py-8">

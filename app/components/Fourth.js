@@ -4,9 +4,9 @@ import { Split } from "lucide-react";
 
 export default function Fourth() {
   return (
-    <section className="w-screen h-auto md:h-[110dvh] overflow-hidden relative px-5 md:px-20 py-10">
+    <section className="w-screen h-auto md:h-fit md:h-[110dvh] overflow-hidden relative px-5 md:px-20 py-10">
       {/* Process Badge */}
-      <div className="mt-5 flex items-center gap-2 border-2 border-blue-400 w-fit p-2 rounded-3xl font-Helvetica">
+      <div className="mt-5 flex items-center gap-2 border-2 border-darkGreen w-fit p-2 rounded-3xl font-Helvetica">
         <Split className="w-5 h-5" /> Our process
       </div>
 
@@ -17,7 +17,7 @@ export default function Fourth() {
         </h1>
         <Btn
           title="Talk to Forex Expert"
-          containerClass="bg-blue-600 text-white px-5 py-3 text-lg"
+          containerClass="bg-darkGreen text-white px-5 py-3 text-lg"
         />
       </div>
 
@@ -33,7 +33,7 @@ export default function Fourth() {
             className="w-48 h-48 md:w-60 md:h-60 lg:w-72 lg:h-72 object-contain"
           />
           <div className="flex items-center justify-start gap-4 mt-4">
-            <div className="font-inter w-fit h-fit text-sm md:text-xl rounded-full justify-start text-white bg-blue-600 px-3 md:px-4 py-2">
+            <div className="font-inter w-fit h-fit text-sm md:text-xl rounded-full justify-start text-white bg-darkGreen px-3 md:px-4 py-2">
               1
             </div>
             <h2 className="text-lg md:text-xl lg:text-2xl font-Helvetica   text-center md:text-left">
@@ -55,7 +55,7 @@ export default function Fourth() {
             className="w-48 h-48 md:w-60 md:h-60 lg:w-72 lg:h-72 object-contain"
           />
           <div className="flex items-center gap-4 mt-4">
-            <div className="font-inter w-fit h-fit text-sm md:text-xl rounded-full justify-start text-white bg-blue-600 px-3 md:px-4 py-2">
+            <div className="font-inter w-fit h-fit text-sm md:text-xl rounded-full justify-start text-white bg-darkGreen px-3 md:px-4 py-2">
               2
             </div>
             <h2 className="text-lg md:text-xl lg:text-2xl font-Helvetica text-center md:text-left">
@@ -77,7 +77,7 @@ export default function Fourth() {
             className="w-48 h-48 md:w-60 md:h-60 lg:w-72 lg:h-72 object-contain"
           />
           <div className="flex items-center gap-4 mt-4">
-            <div className="font-inter w-fit h-fit text-sm md:text-xl rounded-full justify-start text-white bg-blue-600 px-3 md:px-4 py-2">
+            <div className="font-inter w-fit h-fit text-sm md:text-xl rounded-full justify-start text-white bg-darkGreen px-3 md:px-4 py-2">
               3
             </div>
             <h2 className="text-lg md:text-xl lg:text-2xl font-Helvetica   text-center md:text-left">
@@ -99,7 +99,7 @@ export default function Fourth() {
             className="w-48 h-48 md:w-60 md:h-60 lg:w-72 lg:h-72 object-contain"
           />
           <div className="flex items-center gap-4 mt-4">
-            <div className="font-inter w-fit h-fit text-sm md:text-xl rounded-full justify-start text-white bg-blue-600 px-3 md:px-4 py-2">
+            <div className="font-inter w-fit h-fit text-sm md:text-xl rounded-full justify-start text-white bg-darkGreen px-3 md:px-4 py-2">
               4
             </div>
             <h2 className="text-lg md:text-xl lg:text-2xl font-Helvetica   text-center md:text-left">

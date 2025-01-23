@@ -114,7 +114,7 @@ const Testimonials = () => {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="text-blue-400"
+                  className="text-lightGreen"
                 >
                   <path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z" />
                   <path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z" />
@@ -131,7 +131,7 @@ const Testimonials = () => {
                 height={500}
                 className="rounded-full object-cover w-20 h-20 mb-4"
               />
-              <h3 className="text-center font-Helvetica text-lg text-blue-900">
+              <h3 className="text-center font-Helvetica text-lg text-darkGreen">
                 {tm.name}
                 <br />
               </h3>

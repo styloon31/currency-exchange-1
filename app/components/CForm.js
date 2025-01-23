@@ -86,7 +86,7 @@ export default function CForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-full md:mx-14 bg-white border-4 border-blue-400 p-6 rounded-lg shadow-lg flex flex-col items-center font-Helvetica"
+      className="w-full md:mx-14 bg-white border-4 border-green-400 p-6 rounded-lg shadow-lg flex flex-col items-center font-Helvetica"
     >
       <h2 className="text-4xl font-Helvetica font-bold mb-4 text-gray-800">Get expert help</h2>
 
@@ -99,7 +99,7 @@ export default function CForm() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Enter your name"
-          className="w-full p-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="w-full p-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-darkGreen"
           required
         />
       </div>
@@ -116,7 +116,7 @@ export default function CForm() {
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           placeholder="Enter your Mobile no"
-          className="w-full p-3 border rounded-r-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="w-full p-3 border rounded-r-md shadow-sm focus:outline-none focus:ring-2 focus:ring-darkGreen"
           required
         />
       </div>
@@ -133,7 +133,7 @@ export default function CForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your email address"
-          className="w-full p-3 border rounded-r-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="w-full p-3 border rounded-r-md shadow-sm focus:outline-none focus:ring-2 focus:ring-darkGreen"
           required
         />
       </div>
@@ -141,7 +141,7 @@ export default function CForm() {
       {/* Submit Button */}
       <button
         type="submit"
-        className="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition-colors"
+        className="w-full bg-darkGreen text-white py-3 rounded-md hover:bg-green-700 transition-colors"
       >
         Request a call back
       </button>

@@ -2,7 +2,7 @@ import BentoBoxes from "./BentoBoxes";
 
 export default function Fifth() {
   return (
-    <section className="w-screen h-auto overflow-x-hidden relative bg-blue-600 py-10">
+    <section className="w-screen h-auto overflow-x-hidden relative bg-darkGreen py-10">
       <div className="w-full h-full px-5 md:px-20">
         {/* Title */}
         <h1 className="text-white font-helvetica font-bold text-4xl md:text-5xl lg:text-6xl text-center">

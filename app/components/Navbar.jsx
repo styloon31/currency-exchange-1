@@ -1,110 +1,150 @@
 "use client";
-
-import React, { useEffect, useState } from "react";
-import { FiMenu, FiX } from "react-icons/fi";
-import ScrollProgressBar from "./ScrollProgressBar";
-import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
- 
- 
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const NavLinks = ({ mobile = false }) => {
-    const linkClass = mobile
-      ? "text-2xl text-gray-100 pt-10 font-bold hover:text-gray-400 hover:scale-105 transition-all active:text-gray-500"
-      : "text-gray-800  shadow-2xl drop-shadow-xl font-medium hover:text-blue-500 hover:scale-110 transition-all cursor-pointer pt-1 font-Helvetica";
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    return (
-      <>
-       <Link
-          href="/"
-          className={linkClass}
-          onClick={() => mobile && setIsOpen(false)}
-        >
-          Services
-        </Link>
-        <Link
-          href="/Blog"
-          className={linkClass}
-          onClick={() => mobile && setIsOpen(false)}
-        >
-          About Us
-        </Link>
-        <Link
-          href="/contact"
-          className={linkClass}
-          onClick={() => mobile && setIsOpen(false)}
-        >
-          Contact
-        </Link>
-      </>
-    );
-  };
+  const navLinks = [
+    { name: "HOME", href: "#", isActive: true },
+    { name: "ABOUT", href: "about" },
+    { name: "SERVICES", href: "#" },
+    { name: "BLOG", href: "#" },
+  ];
 
   return (
-    <div className="relative z-50">
-      {/* Fixed Navigation Bar */}
-      <div className="fixed top-0 w-full h-20 bg-gray-50/60 backdrop-blur-md px-4 lg:px-20 pt-4">
-        <div className="flex flex-row justify-between items-center">
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        isScrolled ? "bg-black/90 backdrop-blur-sm" : ""
+      }`}
+    >
+      <div className="max-w-7xl mx-auto">
+        <div className="flex items-center justify-between px-4 lg:px-8 h-20">
           {/* Logo Section */}
-          <section className="flex items-center justify-center gap-3 pt-1">
-            <Link href="/">
-              <img
-                src="/Images/logo.jpg"
-                alt="Logo"
-                className="w-auto h-10 drop-shadow-lg cursor-pointer "
-              />
-            </Link>
-            <h1 className="text-2xl font-allround-bold font-bold">7Janpath Forex</h1>
-          </section>
+          <motion.div
+            className="flex items-center space-x-2"
+            whileHover={{ scale: 1.05 }}
+          >
+            <Image src={"/Images/logo.jpg"} height={200} width={200} alt="logo" className="drop-shadow-xl w-12 h-12" />
+            <h1 className={`text-lg font-bold font-Helvetica ${isScrolled? "text-white":"text-black"}`}>7Janpath Forex</h1>
+          </motion.div>
 
           {/* Desktop Navigation Links */}
-          <section className="hidden md:flex gap-10 text-gray-300 pt-2">
-            <NavLinks />
-          </section>
+          <div className="hidden lg:flex">
+            <motion.div
+              className={`flex space-x-1  rounded-full py-2 px-3 backdrop-blur-sm ${isScrolled? "bg-green-600":"bg-green-600/60"} `}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
+              {navLinks.map((link, index) => (
+                <motion.a
+                  key={link.name}
+                  href={link.href}
+                  className={`px-4 py-1 rounded-full text-sm transition-colors ${
+                    link.isActive
+                      ? "text-black"
+                      : "text-white hover:text-black"
+                  }`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  {link.name}
+                </motion.a>
+              ))}
+            </motion.div>
+          </div>
 
-          {/* Mobile Hamburger Icon */}
-          <section
-            className="md:hidden text-gray-300"
-            onClick={() => setIsOpen(!isOpen)}
+          {/* Mobile Menu Button */}
+          <div className="lg:hidden">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 rounded-lg bg-black/20"
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6 text-white" />
+              ) : (
+                <Menu className="w-6 h-6 text-white" />
+              )}
+            </motion.button>
+          </div>
+
+          {/* Contact Button */}
+          <motion.a
+            href="#"
+            className="hidden lg:flex items-center bg-green-400 text-black px-6 py-2 rounded-full font-medium text-sm hover:bg-green-500 transition-colors"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-          </section>
+            Contact
+            <motion.svg
+              className="w-4 h-4 ml-2"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              whileHover={{ x: 5 }}
+              transition={{ type: "spring", stiffness: 400 }}
+            >
+              <path d="M5 12h14m-7-7l7 7-7 7" />
+            </motion.svg>
+          </motion.a>
         </div>
-      </div>
 
-      {/* Scroll Progress Bar */}
-      <ScrollProgressBar />
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="fixed inset-0 bg-gray-900 bg-opacity-95 z-50 md:hidden animate-fade-in"
-          >
-            <div className="relative h-full">
-              {/* Close button */}
-              <button
-                onClick={() => setIsOpen(false)}
-                className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors "
+        {/* Mobile Menu */}
+        <motion.div
+          className={`lg:hidden ${isMobileMenuOpen ? "block" : "hidden"}`}
+          initial={{ opacity: 0, height: 0 }}
+          animate={{
+            opacity: isMobileMenuOpen ? 1 : 0,
+            height: isMobileMenuOpen ? "auto" : 0,
+          }}
+          transition={{ duration: 0.3 }}
+        >
+          <div className="px-4 py-4 bg-black/90 backdrop-blur-sm space-y-2">
+            {navLinks.map((link) => (
+              <motion.a
+                key={link.name}
+                href={link.href}
+                className={`block px-4 py-2 rounded-lg ${
+                  link.isActive ? "text-green-400" : "text-white"
+                }`}
+                whileHover={{ backgroundColor: "rgba(255,255,255,0.1)" }}
               >
-                <FiX size={32} />
-              </button>
-
-              {/* Navigation links */}
-              <div className="flex flex-col items-center justify-center h-full ">
-                <NavLinks mobile />
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+                {link.name}
+              </motion.a>
+            ))}
+            <motion.a
+              href="#"
+              className="block px-4 py-2 bg-green-400 text-black rounded-lg text-center mt-4"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Contact
+            </motion.a>
+          </div>
+        </motion.div>
+      </div>
+    </motion.nav>
   );
 };
 

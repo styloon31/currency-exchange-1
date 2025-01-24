@@ -6,13 +6,13 @@ export default function Hero() {
     <div className="relative bg-[url('/Images/bg.jpg')] bg-cover bg-center w-screen h-fit py-5 lg:py-0 lg:h-dvh overflow-x-hidden mt-20 font-Helvetica">
       <div className="w-full h-full px-5 lg:px-20">
         {/* Illustrations */}
-        <Image
+        {/* <Image
           src="/Images/illustration1.png"
           height={500}
           width={500}
           alt="illustration"
           className="absolute left-[50%] -translate-x-[50%] top-[40px] md:top-[60px] lg:left-[530px] lg:translate-x-0 w-40 md:w-60 md:h-60 hidden landscape:block"
-        />
+        /> */}
 
         {/* Content Grid */}
         <div className="grid w-full h-full grid-cols-1 lg:grid-cols-2 gap-8 items-center">

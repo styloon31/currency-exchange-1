@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { collection, addDoc, doc, getDoc } from "firebase/firestore"; // Firestore imports
 import Swal from "sweetalert2";
 import { db } from "../firebase";
-import { ArrowDownNarrowWide, ArrowDownToLine, ArrowUpToLine, Banknote, LocateIcon, MapPin, Phone, UserPen } from "lucide-react";
+import { ArrowDownNarrowWide, ArrowDownToLine, ArrowUpToLine, Banknote, ChevronDown, ChevronUp, LocateIcon, MapPin, Phone, UserPen } from "lucide-react";
 
 export default function FormTabs() {
   const [activeTab, setActiveTab] = useState("Buy"); // Active tab state
@@ -166,8 +166,8 @@ export default function FormTabs() {
           <span>{selectedCurrency}</span>
         </div>
         {isDropdownOpen?(
-          <span className=""><ArrowUpToLine /></span>
-        ):(<span className=""><ArrowDownToLine /></span>)}
+          <span className=""><ChevronUp /></span>
+        ):(<span className=""><ChevronDown /></span>)}
         
       </button>
       {isDropdownOpen && (

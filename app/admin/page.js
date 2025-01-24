@@ -89,7 +89,13 @@ export default function AdminPage() {
 
       await setDoc(docRef, updatedRates); // Add the new currency to Firestore
       setExchangeRates(updatedRates); // Update the local state
-      setNewCurrency({ code: "", buyRate: "", sellRate: "", symbol: "", flag: "" });
+      setNewCurrency({
+        code: "",
+        buyRate: "",
+        sellRate: "",
+        symbol: "",
+        flag: "",
+      });
       setShowAddModal(false);
       alert("New currency added successfully!");
     } catch (error) {
@@ -101,7 +107,9 @@ export default function AdminPage() {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
         <div className="bg-white p-8 shadow-lg rounded-xl w-11/12 sm:w-96">
-          <h1 className="text-2xl font-semibold mb-4 text-gray-700">Admin Login</h1>
+          <h1 className="text-2xl font-semibold mb-4 text-gray-700">
+            Admin Login
+          </h1>
           <input
             type="password"
             placeholder="Enter password"
@@ -129,20 +137,26 @@ export default function AdminPage() {
 
         {/* Existing exchange rates */}
         <div className="mb-10 overflow-x-auto">
-          <h2 className="text-xl font-semibold mb-6 text-gray-700">Existing Rates</h2>
+          <h2 className="text-xl font-semibold mb-6 text-gray-700">
+            Existing Rates
+          </h2>
           <table className="w-full border-collapse border border-gray-200 text-sm">
             <thead>
               <tr className="bg-gray-100 text-gray-700">
                 <th className="border px-4 sm:px-6 py-3 text-left">Currency</th>
                 <th className="border px-4 sm:px-6 py-3 text-left">Buy Rate</th>
-                <th className="border px-4 sm:px-6 py-3 text-left">Sell Rate</th>
+                <th className="border px-4 sm:px-6 py-3 text-left">
+                  Sell Rate
+                </th>
                 <th className="border px-4 sm:px-6 py-3 text-left">Actions</th>
               </tr>
             </thead>
             <tbody>
               {Object.keys(exchangeRates).map((currency) => (
                 <tr key={currency} className="hover:bg-gray-50">
-                  <td className="border px-4 sm:px-6 py-4 font-medium">{currency}</td>
+                  <td className="border px-4 sm:px-6 py-4 font-medium">
+                    {currency}
+                  </td>
                   <td className="border px-4 sm:px-6 py-4">
                     <input
                       type="number"
@@ -180,7 +194,7 @@ export default function AdminPage() {
                       onClick={() =>
                         handleUpdate(currency, exchangeRates[currency])
                       }
-                      className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
+                      className="px-4 py-2 bg-gradient-to-r from-[#FC8E06] to-[#FEBC3E] text-white rounded-lg hover:bg-green-600 transition"
                     >
                       Save
                     </button>
@@ -205,7 +219,9 @@ export default function AdminPage() {
         {showAddModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <div className="bg-white rounded-lg p-6 w-11/12 sm:w-full max-w-lg shadow-lg">
-              <h2 className="text-xl sm:text-2xl font-bold mb-6 text-gray-800">Add New Currency</h2>
+              <h2 className="text-xl sm:text-2xl font-bold mb-6 text-gray-800">
+                Add New Currency
+              </h2>
               <form
                 onSubmit={(e) => {
                   e.preventDefault();

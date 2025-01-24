@@ -18,6 +18,8 @@ export default {
       colors:{
         darkGreen:"#004E42",
         lightGreen:"#A8DF8E",
+        darkBlue:"#1B6B91",
+        lightOrange:"#FFB427"
       }
     },
   },

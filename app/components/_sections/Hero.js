@@ -1,9 +1,9 @@
 import Image from "next/image";
-import FormTabs from "./Form";
+import FormTabs from "../Form";
 
 export default function Hero() {
   return (
-    <div className="relative bg-[url('/Images/bg.jpg')] bg-cover bg-center w-screen h-fit py-5 lg:py-0 lg:h-dvh overflow-x-hidden mt-20 font-Helvetica">
+    <div className="relative bg-[url('/Images/bgHero.jpg')] bg-cover bg-center w-screen h-fit py-5 lg:py-0 lg:h-dvh overflow-x-hidden mt-20 font-Helvetica">
       <div className="w-full h-full px-5 lg:px-20">
         {/* Illustrations */}
         {/* <Image
@@ -17,7 +17,7 @@ export default function Hero() {
         {/* Content Grid */}
         <div className="grid w-full h-full grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           {/* Left Section */}
-          <div className="col-span-1 w-full h-full flex flex-col justify-center gap-4 text-darkGreen text-center lg:text-left z-10 px-4 lg:px-0">
+          <div className="col-span-1 w-full h-full flex flex-col justify-center gap-4 text-darkBlue text-center lg:text-left z-10 px-4 lg:px-0">
             <h1 className="text-2xl md:text-3xl">
               Leading Currency Exchange in India
             </h1>
@@ -33,7 +33,7 @@ export default function Hero() {
               Exchange Rates at our Nearest Branch
             </p>
             {/* Info Boxes */}
-            <div className="flex flex-col sm:flex-row bg-darkGreen/10 backdrop-blur-xl border-darkGreen/20 border-2 px-6 md:px-8 lg:px-14 py-5 gap-5 mt-8 items-center justify-around rounded-xl">
+            <div className="flex flex-col sm:flex-row bg-darkBlue/10 backdrop-blur-xl border-darkBlue/20 border-2 px-6 md:px-8 lg:px-14 py-5 gap-5 mt-8 items-center justify-around rounded-xl">
               <div className="flex flex-col items-center justify-center">
                 <h4 className="text-2xl md:text-3xl">28 Years</h4>
                 <p className="text-xs md:text-sm lg:text-base font-inter">

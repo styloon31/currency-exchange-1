@@ -154,7 +154,7 @@ export default function FormTabs() {
     <div className="relative">
       <button
         type="button"
-        className="px-4 py-2 gap-2 border rounded-lg flex items-center justify-between w-full focus:outline-none focus:ring-2 focus:ring-darkGreen"
+        className="px-4 py-2 gap-2 border rounded-lg flex items-center justify-between w-full focus:outline-none focus:ring-2 focus:ring-lightOrange"
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
       >
         <div className="flex items-center gap-2">
@@ -201,7 +201,7 @@ export default function FormTabs() {
               <MapPin /> Select City
             </label>
             <select
-              className="w-full px-4 py-2 shadow-md border rounded-lg focus:outline-none focus:ring-2 focus:ring-darkGreen text-sm"
+              className="w-full px-4 py-2 shadow-md border rounded-lg focus:outline-none focus:ring-2 focus:ring-lightOrange text-sm"
               value={city}
               onChange={(e) => setCity(e.target.value)}
             >
@@ -222,7 +222,7 @@ export default function FormTabs() {
                 value={forexAmount}
                 onChange={handleForexChange}
                 placeholder="Forex Amount"
-                className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-darkGreen text-sm"
+                className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-lightOrange text-sm"
               />
               {renderCustomDropdown()}
             </div>
@@ -241,7 +241,7 @@ export default function FormTabs() {
                 value={inrAmount}
                 onChange={handleInrChange}
                 placeholder="INR Amount"
-                className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-darkGreen text-sm"
+                className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-lightOrange text-sm"
               />
               <span className="text-gray-500 text-sm">
                 1 = ₹ {conversionRateSell}
@@ -259,7 +259,7 @@ export default function FormTabs() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Enter your Name"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-darkGreen text-sm"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-lightOrange text-sm"
             />
           </div>
 
@@ -272,14 +272,14 @@ export default function FormTabs() {
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="Enter your Phone Number"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-darkGreen text-sm"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-lightOrange text-sm"
             />
           </div>
 
           <div>
             <button
               type="submit"
-              className="w-full bg-darkGreen text-white py-3 rounded-lg hover:bg-green-700transition text-sm"
+              className="w-full bg-gradient-to-r from-[#FC8E06] to-[#FEBC3E] text-white py-3 rounded-lg hover:bg-green-700transition text-sm"
             >
               Request a Callback
             </button>
@@ -294,7 +294,7 @@ export default function FormTabs() {
               <MapPin /> Select City
             </label>
             <select
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-darkGreen text-sm"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-lightOrange text-sm"
               value={city}
               onChange={(e) => setCity(e.target.value)}
             >
@@ -316,7 +316,7 @@ export default function FormTabs() {
                 value={inrAmount}
                 onChange={handleInrChange}
                 placeholder="INR Amount"
-                className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-darkGreen text-sm"
+                className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-lightOrange text-sm"
               />
               <span className="text-gray-500 text-sm">
                 1 = ₹ {conversionRate}
@@ -338,7 +338,7 @@ export default function FormTabs() {
                 value={forexAmount}
                 onChange={handleForexChange}
                 placeholder="Forex Amount"
-                className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-darkGreen text-sm"
+                className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-lightOrange text-sm"
               />
               {renderCustomDropdown()}
             </div>
@@ -354,7 +354,7 @@ export default function FormTabs() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Enter your Name"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-darkGreen text-sm"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-lightOrange text-sm"
             />
           </div>
 
@@ -367,14 +367,14 @@ export default function FormTabs() {
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="Enter your Phone Number"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-darkGreen text-sm"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-lightOrange text-sm"
             />
           </div>
 
           <div>
             <button
               type="submit"
-              className="w-full bg-darkGreen text-white py-3 rounded-lg hover:bg-green-700 transition text-sm"
+              className="w-full bg-gradient-to-r from-[#FC8E06] to-[#FEBC3E] text-white py-3 rounded-lg hover:bg-green-700 transition text-sm"
             >
               Request a Callback
             </button>
@@ -386,12 +386,12 @@ export default function FormTabs() {
 
   return (
     
-    <div className="max-w-4xl mx-auto p-6 sm:p-8 bg-white shadow-md border-4 rounded-3xl border-darkGreen z-20">
-      <div className="flex justify-center space-x-4 mb-6 border-b-2 border-darkGreering-darkGreen">
+    <div className="max-w-4xl mx-auto p-6 sm:p-8 bg-white shadow-md border-2 rounded-3xl border-lightOrange z-20">
+      <div className="flex justify-center space-x-4 mb-6 border-b-2 border-lightOrange">
         <button
           className={`px-4 py-2 font-medium ${
             activeTab === "Buy"
-              ? "text-darkGreen border-b-2 border-darkGreen"
+              ? "text-lightOrange border-b-2 border-lightOrange"
               : "text-gray-600"
           }`}
           onClick={() => setActiveTab("Buy")}
@@ -401,7 +401,7 @@ export default function FormTabs() {
         <button
           className={`px-4 py-2 font-medium ${
             activeTab === "Sell"
-              ? "text-darkGreen border-b-2 border-darkGreen"
+              ? "text-lightOrange border-b-2 border-lightOrange"
               : "text-gray-600"
           }`}
           onClick={() => setActiveTab("Sell")}

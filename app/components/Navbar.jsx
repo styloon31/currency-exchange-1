@@ -46,7 +46,7 @@ const Navbar = () => {
           {/* Desktop Navigation Links */}
           <div className="hidden lg:flex">
             <motion.div
-              className={`flex space-x-1  rounded-full py-2 px-3 backdrop-blur-sm ${isScrolled? "bg-green-600":"bg-green-600/60"} `}
+              className={`flex space-x-1  rounded-full py-2 px-3 backdrop-blur-sm ${isScrolled? "bg-lightOrange":"bg-lightOrange/80"} `}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
@@ -57,8 +57,8 @@ const Navbar = () => {
                   href={link.href}
                   className={`px-4 py-1 rounded-full text-sm transition-colors ${
                     link.isActive
-                      ? "text-black"
-                      : "text-white hover:text-black"
+                      ? "text-white"
+                      : "text-black hover:text-white"
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -91,7 +91,7 @@ const Navbar = () => {
           {/* Contact Button */}
           <motion.a
             href="#"
-            className="hidden lg:flex items-center bg-green-400 text-black px-6 py-2 rounded-full font-medium text-sm hover:bg-green-500 transition-colors"
+            className="hidden lg:flex items-center bg-gradient-to-r from-[#FC8E06] to-[#FEBC3E] text-white px-6 py-2 rounded-full font-medium text-sm hover:bg-blue-300 transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -135,7 +135,7 @@ const Navbar = () => {
             ))}
             <motion.a
               href="#"
-              className="block px-4 py-2 bg-green-400 text-black rounded-lg text-center mt-4"
+              className="block px-4 py-2 bg-darkBlue text-black rounded-lg text-center mt-4"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >

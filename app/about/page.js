@@ -7,6 +7,7 @@ import Section5 from "./Section5";
 import Section6 from "./Section6";
 import OurValues from "./OurValues";
 import Footer from "../components/Footer";
+import WhatsappButton from "../components/WhatsappButton";
 
 export default function about() {
   return (
@@ -19,6 +20,7 @@ export default function about() {
       <Section5 />
       <Section6 />
       <OurValues />
+      <WhatsappButton />
       <Footer />
     </main>
   );

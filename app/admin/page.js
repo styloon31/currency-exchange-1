@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { doc, getDoc, setDoc } from "firebase/firestore"; // Firestore imports
+import { doc, getDoc, setDoc, updateDoc, deleteField } from "firebase/firestore"; // Firestore imports
 import { db } from "../firebase"; // Firebase config
 
 export default function AdminPage() {
@@ -23,12 +23,12 @@ export default function AdminPage() {
   useEffect(() => {
     const fetchExchangeRates = async () => {
       try {
-        const docRef = doc(db, "exchange-rates", "rates"); // Access the "rates" document
+        const docRef = doc(db, "exchange-rates", "rates");
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-          const rates = docSnap.data(); // Get the data inside the "rates" document
-          setExchangeRates(rates); // Set it to the state
+          const rates = docSnap.data();
+          setExchangeRates(rates);
         } else {
           console.error("No rates found in Firestore.");
         }
@@ -52,10 +52,10 @@ export default function AdminPage() {
   // Handle updating exchange rates
   const handleUpdate = async (currencyCode, updatedRate) => {
     try {
-      const docRef = doc(db, "exchange-rates", "rates"); // Access the "rates" document
+      const docRef = doc(db, "exchange-rates", "rates");
       const updatedRates = { ...exchangeRates, [currencyCode]: updatedRate };
-      await setDoc(docRef, updatedRates, { merge: true }); // Update the document
-      setExchangeRates(updatedRates); // Update the state
+      await setDoc(docRef, updatedRates, { merge: true });
+      setExchangeRates(updatedRates);
       alert("Exchange rate updated successfully!");
     } catch (error) {
       console.error("Error updating exchange rate:", error);
@@ -87,8 +87,8 @@ export default function AdminPage() {
         },
       };
 
-      await setDoc(docRef, updatedRates); // Add the new currency to Firestore
-      setExchangeRates(updatedRates); // Update the local state
+      await setDoc(docRef, updatedRates);
+      setExchangeRates(updatedRates);
       setNewCurrency({
         code: "",
         buyRate: "",
@@ -100,6 +100,25 @@ export default function AdminPage() {
       alert("New currency added successfully!");
     } catch (error) {
       console.error("Error adding new currency:", error);
+    }
+  };
+
+  // Handle deleting a currency
+  const handleDelete = async (currencyCode) => {
+    try {
+      const docRef = doc(db, "exchange-rates", "rates");
+      await updateDoc(docRef, {
+        [currencyCode]: deleteField(),
+      });
+
+      const updatedRates = { ...exchangeRates };
+      delete updatedRates[currencyCode];
+      setExchangeRates(updatedRates);
+
+      alert(`${currencyCode} has been deleted successfully!`);
+    } catch (error) {
+      console.error("Error deleting currency:", error);
+      alert("Failed to delete the currency. Please try again.");
     }
   };
 
@@ -135,7 +154,6 @@ export default function AdminPage() {
           Manage Exchange Rates
         </h1>
 
-        {/* Existing exchange rates */}
         <div className="mb-10 overflow-x-auto">
           <h2 className="text-xl font-semibold mb-6 text-gray-700">
             Existing Rates
@@ -145,9 +163,7 @@ export default function AdminPage() {
               <tr className="bg-gray-100 text-gray-700">
                 <th className="border px-4 sm:px-6 py-3 text-left">Currency</th>
                 <th className="border px-4 sm:px-6 py-3 text-left">Buy Rate</th>
-                <th className="border px-4 sm:px-6 py-3 text-left">
-                  Sell Rate
-                </th>
+                <th className="border px-4 sm:px-6 py-3 text-left">Sell Rate</th>
                 <th className="border px-4 sm:px-6 py-3 text-left">Actions</th>
               </tr>
             </thead>
@@ -189,7 +205,7 @@ export default function AdminPage() {
                       className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
                     />
                   </td>
-                  <td className="border px-4 sm:px-6 py-4">
+                  <td className="border px-4 sm:px-6 py-4 flex space-x-2">
                     <button
                       onClick={() =>
                         handleUpdate(currency, exchangeRates[currency])
@@ -198,6 +214,12 @@ export default function AdminPage() {
                     >
                       Save
                     </button>
+                    <button
+                      onClick={() => handleDelete(currency)}
+                      className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}
@@ -205,7 +227,6 @@ export default function AdminPage() {
           </table>
         </div>
 
-        {/* Add New Currency Button */}
         <div className="flex justify-end">
           <button
             onClick={() => setShowAddModal(true)}
@@ -215,7 +236,6 @@ export default function AdminPage() {
           </button>
         </div>
 
-        {/* Add New Currency Modal */}
         {showAddModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <div className="bg-white rounded-lg p-6 w-11/12 sm:w-full max-w-lg shadow-lg">

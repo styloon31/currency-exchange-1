@@ -1,6 +1,7 @@
 import Third from "../components/_sections/Third";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import WhatsappButton from "../components/WhatsappButton";
 import ContactSection from "./ContactSection";
 
 export default function contact() {
@@ -9,6 +10,7 @@ export default function contact() {
       <Navbar />
       <ContactSection />
       <Third />
+      <WhatsappButton />
       <Footer />
     </main>
   );

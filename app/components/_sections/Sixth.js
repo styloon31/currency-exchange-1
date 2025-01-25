@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export default function Sixth() {
   return (
-    <section className="w-screen min-h-dvh overflow-x-hidden py-8 md:py-20 relative flex items-center justify-center">
-      <div className="bg-white py-12 w-full">
+    <div className="w-screen h-screen overflow-x-hidden py-8 md:py-20 relative flex items-center justify-center">
+      <div className="bg-white py-12 w-full h-full">
         <div className="mx-auto px-6 md:px-12 lg:px-20 w-full items-center justify-center">
           {/* Header Section */}
           <div className="text-center mb-10 flex flex-col items-center justify-center">
@@ -68,6 +68,6 @@ export default function Sixth() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

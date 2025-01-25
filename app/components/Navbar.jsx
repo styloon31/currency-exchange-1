@@ -18,9 +18,8 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "HOME", href: "#", isActive: true },
+    { name: "HOME", href: "/", isActive: true },
     { name: "ABOUT", href: "about" },
-    { name: "SERVICES", href: "#" },
     { name: "BLOG", href: "#" },
   ];
 
@@ -90,7 +89,7 @@ const Navbar = () => {
 
           {/* Contact Button */}
           <motion.a
-            href="#"
+            href="/contact"
             className="hidden lg:flex items-center bg-gradient-to-r from-[#FC8E06] to-[#FEBC3E] text-white px-6 py-2 rounded-full font-medium text-sm hover:bg-blue-300 transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -134,7 +133,7 @@ const Navbar = () => {
               </motion.a>
             ))}
             <motion.a
-              href="#"
+              href="/contact"
               className="block px-4 py-2 bg-darkBlue text-black rounded-lg text-center mt-4"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}

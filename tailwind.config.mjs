@@ -20,7 +20,16 @@ export default {
         lightGreen:"#A8DF8E",
         darkBlue:"#1B6B91",
         lightOrange:"#FFB427"
-      }
+      },
+      animation: {
+        scroll1: "scroll1 80s linear infinite",
+      },
+      keyframes: {
+        scroll1: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
+      },
     },
   },
   plugins: [],

@@ -3,7 +3,7 @@ import FormTabs from "../Form";
 
 export default function Hero() {
   return (
-    <div className="relative bg-[url('/Images/bgHero.jpg')] bg-cover bg-center w-screen h-fit py-5 lg:py-0 lg:h-dvh overflow-x-hidden mt-20 font-Helvetica">
+    <div className="sticky top-0 bg-[url('/Images/bgHero.jpg')] bg-cover bg-center w-screen h-fit py-5 lg:py-0 lg:h-dvh overflow-x-hidden mt-20 font-Helvetica">
       <div className="w-full h-full px-5 lg:px-20">
         {/* Illustrations */}
         {/* <Image

@@ -1,3 +1,4 @@
+
 "use client"
 import Image from "next/image";
 import Hero from "./components/_sections/Hero";
@@ -27,7 +28,7 @@ export default function Home() {
     requestAnimationFrame(raf)
   },[])
 
-
+//
   return (
     <main className="relative min-h-screen w-screen overflow-x-hidden">
       <Navbar />

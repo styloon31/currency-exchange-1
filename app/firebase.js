@@ -1,18 +1,21 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCjO1B_sU7vdK8mi6x0AA1mYrmonC0XMck",
-  authDomain: "janpath-65ce1.firebaseapp.com",
-  projectId: "janpath-65ce1",
-  storageBucket: "janpath-65ce1.firebasestorage.app",
-  messagingSenderId: "713099119206",
-  appId: "1:713099119206:web:970be34701a715089bfba7",
-  measurementId: "G-8SHH46Y6C1"
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
+const analytics = typeof window !== "undefined" ? getAnalytics(app) : null;
 const db = getFirestore(app);
+const auth = getAuth(app);
 
-export { db };
+export { db, auth };

@@ -1,9 +1,21 @@
 "use client";
+import emailjs from "@emailjs/browser";
 import { useEffect, useState } from "react";
 import { collection, addDoc, doc, getDoc } from "firebase/firestore"; // Firestore imports
 import Swal from "sweetalert2";
 import { db } from "../firebase";
-import { ArrowDownNarrowWide, ArrowDownToLine, ArrowUpToLine, Banknote, ChevronDown, ChevronUp, LocateIcon, MapPin, Phone, UserPen } from "lucide-react";
+import {
+  ArrowDownNarrowWide,
+  ArrowDownToLine,
+  ArrowUpToLine,
+  Banknote,
+  ChevronDown,
+  ChevronUp,
+  LocateIcon,
+  MapPin,
+  Phone,
+  UserPen,
+} from "lucide-react";
 
 export default function FormTabs() {
   const [activeTab, setActiveTab] = useState("Buy"); // Active tab state
@@ -113,41 +125,52 @@ export default function FormTabs() {
 
     if (!validateForm()) return;
 
-    const requestData = {
-      name,
-      phone,
-      forexAmount,
-      inrAmount,
-      selectedCurrency,
-      conversionRate,
-      city,
-      timestamp: new Date(),
+    const templateParams = {
+      name: name || "No Name Provided",
+      phone: phone || "No Phone Number",
+      forexAmount: forexAmount || "0",
+      inrAmount: inrAmount || "0",
+      selectedCurrency: selectedCurrency || "N/A",
+      city: city || "Delhi NCR",
+      conversionRate: activeTab === "Buy" ? conversionRate : conversionRateSell,
     };
 
-    // Determine collection based on activeTab
-    const collectionName =
-      activeTab === "Buy" ? "buy-requests" : "sell-requests";
+    emailjs
+      .send(
+        "service_l9s26yk", // Replace with your EmailJS service ID
+        "template_xk5peil", // Replace with your EmailJS template ID
+        templateParams,
+        "HP5OIGwzPCo7qJVbL" // Replace with your EmailJS public key
+      )
+      .then(
+        (response) => {
+          console.log(
+            "SUCCESS!",
+            response.status,
+            response.text,
+            templateParams
+          );
+          Swal.fire({
+            icon: "success",
+            title: "Success",
+            text: `Your ${activeTab} request has been submitted successfully!`,
+          });
 
-    try {
-      await addDoc(collection(db, collectionName), requestData);
-
-      Swal.fire({
-        icon: "success",
-        title: "Success",
-        text: `Your ${activeTab} request has been submitted successfully!`,
-      });
-
-      setName("");
-      setPhone("");
-      setCity("");
-      resetAmounts();
-    } catch (error) {
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        text: "Something went wrong. Please try again later.",
-      });
-    }
+          // Reset form
+          setName("");
+          setPhone("");
+          setCity("");
+          resetAmounts();
+        },
+        (error) => {
+          console.error("FAILED...", error);
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Something went wrong. Please try again later.",
+          });
+        }
+      );
   };
 
   const renderCustomDropdown = () => (
@@ -165,10 +188,15 @@ export default function FormTabs() {
           />
           <span>{selectedCurrency}</span>
         </div>
-        {isDropdownOpen?(
-          <span className=""><ChevronUp /></span>
-        ):(<span className=""><ChevronDown /></span>)}
-        
+        {isDropdownOpen ? (
+          <span className="">
+            <ChevronUp />
+          </span>
+        ) : (
+          <span className="">
+            <ChevronDown />
+          </span>
+        )}
       </button>
       {isDropdownOpen && (
         <div className="absolute mt-2 w-full bg-white border rounded-lg shadow-lg max-h-60 overflow-y-auto z-10">
@@ -385,7 +413,6 @@ export default function FormTabs() {
   };
 
   return (
-    
     <div className="max-w-4xl mx-auto p-6 sm:p-8 bg-white shadow-md border-2 rounded-3xl border-lightOrange z-20">
       <div className="flex justify-center space-x-4 mb-6 border-b-2 border-lightOrange">
         <button

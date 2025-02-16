@@ -33,7 +33,7 @@ export default function Section1() {
           transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
           className="text-base sm:text-lg md:text-xl font-inter max-w-lg md:max-w-3xl text-center mt-4 md:mt-8"
         >
-          Since its inception in 2014, our company has been synonymous with
+          Since its inception in 2018, our company has been synonymous with
           unwavering expertise and a reputation that echoes trust and
           excellence.
         </motion.p>

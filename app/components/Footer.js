@@ -24,9 +24,6 @@ export default function Footer() {
             <div className="flex flex-col gap-2">
               <p className="text-base md:text-lg font-Helvetica">About Us</p>
               <p className="text-base md:text-lg font-Helvetica">Contact</p>
-              <p className="text-base md:text-lg font-Helvetica">
-                Our Services
-              </p>
             </div>
           </div>
 
@@ -36,14 +33,14 @@ export default function Footer() {
               Have A Question?
             </h2>
             <div className="flex flex-col gap-2 items-start md:items-end">
-              <p className="text-base md:text-lg font-inter">+91- 8447532226</p>
+              <p className="text-base md:text-lg font-inter">+91- 8882382276</p>
               <p className="text-base md:text-lg font-inter">
                 info@7janpathforex.com
               </p>
               <div className="flex gap-4 mt-2">
-                <Instagram className="w-5 h-5" />
+                <Link href="instagram.com/7janpath-forex"><Instagram className="w-5 h-5" /></Link>
                 <Twitter className="w-5 h-5" />
-                <Linkedin className="w-5 h-5" />
+                <Link href="https://www.linkedin.com/company/7janpathforex/"><Linkedin className="w-5 h-5" /></Link>
                 <Facebook className="w-5 h-5" />
                 <Youtube className="w-5 h-5" />
               </div>

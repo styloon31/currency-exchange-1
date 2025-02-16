@@ -35,21 +35,21 @@ export default function Hero() {
             {/* Info Boxes */}
             <div className="flex flex-col sm:flex-row bg-darkBlue/10 backdrop-blur-xl border-darkBlue/20 border-2 px-6 md:px-8 lg:px-14 py-5 gap-5 mt-8 items-center justify-around rounded-xl">
               <div className="flex flex-col items-center justify-center">
-                <h4 className="text-2xl md:text-3xl">28 Years</h4>
+                <h4 className="text-2xl md:text-3xl">23 Years</h4>
                 <p className="text-xs md:text-sm lg:text-base font-inter">
                   of forex expertise
                 </p>
               </div>
               <div className="flex flex-col items-center justify-center">
                 <h4 className="text-2xl md:text-3xl">
-                  20<span className="font-sans">+</span>
+                  2<span className="font-sans">+</span>
                 </h4>
                 <p className="text-xs md:text-sm lg:text-base font-inter">
                   Branches across India
                 </p>
               </div>
               <div className="flex flex-col items-center justify-center">
-                <h4 className="text-2xl md:text-3xl">Pan India</h4>
+                <h4 className="text-2xl md:text-3xl">Delhi NCR</h4>
                 <p className="text-xs md:text-sm lg:text-base font-inter">
                   Customer Served
                 </p>

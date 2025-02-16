@@ -41,7 +41,7 @@ export default function Section3() {
           <span className="text-gray-500">Boundless Horizons</span>
         </h1>
         <p className="text-gray-600 text-sm md:text-xl leading-relaxed font-Helvetica">
-          In our pursuit of a connected world, SSL has strategically positioned
+          In our pursuit of a connected world, 7Janpath Forex has strategically positioned
           itself with 24 branches and 3 administrative offices spread across
           various states in India. This well-knit network enables us to
           seamlessly bridge geographical boundaries, allowing our clients to

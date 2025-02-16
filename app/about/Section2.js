@@ -52,7 +52,7 @@ export default function Section2() {
               Embark on a journey with 7Janpath Forex, an online initiative
               crafted by the esteemed Supreme Securities Limited, a pioneering
               figure in the currency exchange and money transfer industry of
-              India, with a legacy spanning over 28 years.
+              India, with a legacy spanning over 23 years.
             </p>
           </motion.div>
         </div>

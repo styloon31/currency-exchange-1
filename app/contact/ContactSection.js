@@ -37,7 +37,7 @@ export default function ContactSection() {
         "service_l9s26yk",
         "template_qjr445n",
         templateParams,
-       "HP5OIGwzPCo7qJVbL",
+        "HP5OIGwzPCo7qJVbL"
       );
 
       Swal.fire({
@@ -47,7 +47,13 @@ export default function ContactSection() {
         confirmButtonColor: "#FC8E06",
       });
 
-      setFormData({ firstName: "", lastName: "", email: "", phone: "", message: "" });
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
     } catch (error) {
       console.error("Error sending email:", error);
       Swal.fire({
@@ -67,10 +73,12 @@ export default function ContactSection() {
         {/* Section Header */}
         <div className="text-center mb-8">
           <h2 className="text-3xl md:text-6xl font-bold font-Helvetica text-gray-800 leading-10">
-            Speak Directly to Our Expert<br /> Advisors
+            Speak Directly to Our Expert
+            <br /> Advisors
           </h2>
           <p className="text-gray-600 text-xl mt-2">
-            Connect with our forex experts to fulfill your currency requirements and queries.
+            Connect with our forex experts to fulfill your currency requirements
+            and queries.
           </p>
         </div>
 
@@ -80,11 +88,18 @@ export default function ContactSection() {
           <div className="flex flex-col gap-6">
             <div className="flex items-center gap-4">
               <div className="w-10 h-10 flex items-center justify-center bg-green-100 rounded-full">
-                <Image src="/Images/contact/whatsapp.png" height={40} width={40} alt="whatsapp" />
+                <Image
+                  src="/Images/contact/whatsapp.png"
+                  height={40}
+                  width={40}
+                  alt="whatsapp"
+                />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-800">WhatsApp or Call Us</h3>
-                <p className="text-gray-600">+91-8447532226</p>
+                <h3 className="font-semibold text-gray-800">
+                  WhatsApp or Call Us
+                </h3>
+                <p className="text-gray-600">+91-8882382276</p>
               </div>
             </div>
 
@@ -103,10 +118,16 @@ export default function ContactSection() {
                 <MapPinHouse className="w-12 h-12" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-800">Registered Address</h3>
+                <h3 className="font-semibold text-gray-800">HQ Address:</h3>
                 <p className="text-gray-600">
-                  Supreme Securities Limited, 3rd Floor, RD Chambers, 16/11, Arya Samaj Road, Karol
-                  Bagh, New Delhi-110005 (INDIA)
+                  Shop No - 7, Block A, Connaught Place, New Delhi, Delhi 110001
+                </p>
+                <h3 className="font-semibold text-gray-800">
+                  Branch Office Address:
+                </h3>
+                <p className="text-gray-600">
+                  Shop No.-MEZZ-007, Mezzanine Floor, Ansal Fortune Arcade, K
+                  Block, Pocket E, Sector 18, Noida, Uttar Pradesh 201301
                 </p>
               </div>
             </div>
@@ -114,7 +135,10 @@ export default function ContactSection() {
 
           {/* Right Column: Contact Form */}
           <div>
-            <form onSubmit={sendEmail} className="bg-gray-50 p-6 rounded-lg shadow-lg space-y-4">
+            <form
+              onSubmit={sendEmail}
+              className="bg-gray-50 p-6 rounded-lg shadow-lg space-y-4"
+            >
               <div className="grid grid-cols-2 gap-4">
                 <input
                   type="text"

@@ -1,4 +1,5 @@
 import { Copyright, DotIcon, Facebook, Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   return (

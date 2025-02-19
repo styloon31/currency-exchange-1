@@ -33,7 +33,7 @@ export default function Footer() {
               Have A Question?
             </h2>
             <div className="flex flex-col gap-2 items-start md:items-end">
-              <p className="text-base md:text-lg font-inter">+91- 8882382276</p>
+              <p className="text-base md:text-lg font-inter">+91- 9810474232</p>
               <p className="text-base md:text-lg font-inter">
                 info@7janpathforex.com
               </p>
@@ -41,7 +41,7 @@ export default function Footer() {
                 <Link href="instagram.com/7janpath-forex"><Instagram className="w-5 h-5" /></Link>
                 <Twitter className="w-5 h-5" />
                 <Link href="https://www.linkedin.com/company/7janpathforex/"><Linkedin className="w-5 h-5" /></Link>
-                <Facebook className="w-5 h-5" />
+                <Link href="instagram.com/7janpath-forex"><Facebook className="w-5 h-5" /></Link>
                 <Youtube className="w-5 h-5" />
               </div>
             </div>

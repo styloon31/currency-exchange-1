@@ -7,53 +7,46 @@ import "slick-carousel/slick/slick-theme.css";
 
 const testimonial = [
   {
-    name: "Kristina Draper",
-    location: "Asian Tourist",
-    img: "/Images/tourist.jpg",
+    name: "Vikam Singh",
+    location: "Indian",
+    img: "/Images/tourist1.jpg",
     message:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ducimus animi inventore atque assumenda quidem.",
+      "I needed to exchange AED to INR for a trip to Dubai. 7janpath forex had a good rate and they also offered me a forex card which was very useful during my travels. They have a wide range of currencies and services, making them my go-to currency exchange provider.",
   },
   {
-    name: "Kristina Draper",
-    location: "Asian Tourist",
-    img: "/Images/tourist.jpg",
+    name: "Simran Kaur",
+    location: "Indian",
+    img: "/Images/tourist1.jpg",
     message:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ducimus animi inventore atque assumenda quidem.",
+      "Great rates, excellent service, and super convenient. 7janpath forex is the best place to exchange currency. I wouldn't go anywhere else.",
   },
   {
-    name: "Kristina Draper",
-    location: "Asian Tourist",
-    img: "/Images/tourist.jpg",
+    name: "Amit Kapoor",
+    location: "Indian",
+    img: "/Images/tourist1.jpg",
     message:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ducimus animi inventore atque assumenda quidem.",
+      "I've been using 7janpath forex for all my currency exchange needs for the past few years. I trust them completely. Their rates are always competitive, and they are reliable and honest. I wouldn't go anywhere else.",
   },
   {
-    name: "Kristina Draper",
-    location: "Asian Tourist",
-    img: "/Images/tourist.jpg",
+    name: "Neha Reddy",
+    location: "Indian",
+    img: "/Images/tourist1.jpg",
     message:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ducimus animi inventore atque assumenda quidem.",
+      "I was in a rush to exchange some Euros before my trip, and 7janpath forex was incredibly fast. The transaction was completed quickly and efficiently, and I was on my way in no time. Saved me a lot of stress!",
   },
   {
-    name: "Kristina Draper",
-    location: "Asian Tourist",
-    img: "/Images/tourist.jpg",
+    name: "Anit Uniyal",
+    location: "Indian",
+    img: "/Images/tourist1.jpg",
     message:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ducimus animi inventore atque assumenda quidem.",
+      "It was a good experience in getting forex though you people- Quick and quality response. Thanks a lot",
   },
   {
-    name: "Kristina Draper",
-    location: "Asian Tourist",
-    img: "/Images/tourist.jpg",
+    name: "Chand Mohammad",
+    location: "Indian",
+    img: "/Images/tourist1.jpg",
     message:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ducimus animi inventore atque assumenda quidem.",
-  },
-  {
-    name: "Kristina Draper",
-    location: "Asian Tourist",
-    img: "/Images/tourist.jpg",
-    message:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ducimus animi inventore atque assumenda quidem.",
+      "I have tried various money exchange providers but none was as good as 7 Janpath Forex. Agility and friendly outlook, the best part is the unbeatable rates. Just go for it.",
   },
 ];
 

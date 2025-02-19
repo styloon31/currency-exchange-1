@@ -99,7 +99,7 @@ export default function ContactSection() {
                 <h3 className="font-semibold text-gray-800">
                   WhatsApp or Call Us
                 </h3>
-                <p className="text-gray-600">+91-8882382276</p>
+                <p className="text-gray-600">+91- 9810474232</p>
               </div>
             </div>
 

@@ -66,13 +66,6 @@ const settings = {
       },
     },
     {
-      breakpoint: 1279,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 1,
-      },
-    },
-    {
       breakpoint: 1024,
       settings: {
         slidesToShow: 2,
@@ -95,8 +88,9 @@ const Testimonials = () => {
       {testimonial.map((tm, i) => {
         return (
           <aside key={i} className="p-4">
-            <div className="p-8 rounded-3xl bg-white shadow-md flex flex-col items-center justify-center">
-              <div className="flex w-full justify-between">
+            <div className="p-8 rounded-3xl bg-white shadow-md flex flex-col justify-between items-center h-fit md:h-[60vh]">
+              {/* Stars and Quote Icon in a Single Line */}
+              <div className="flex justify-between items-center w-full">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -114,20 +108,27 @@ const Testimonials = () => {
                 </svg>
                 <div>⭐⭐⭐⭐⭐</div>
               </div>
-              <p className="text-lg font-inter text-gray-700 text-center mt-6 mb-8">
-                {tm.message}
-              </p>
-              <Image
-                src={tm.img}
-                alt={tm.name}
-                width={500}
-                height={500}
-                className="rounded-full object-cover w-20 h-20 mb-4"
-              />
-              <h3 className="text-center font-Helvetica text-lg text-darkBlue">
-                {tm.name}
-                <br />
-              </h3>
+
+              {/* Message with fixed height */}
+              <div className="flex-grow flex items-center">
+                <p className="text-lg font-inter text-gray-700 text-center leading-relaxed">
+                  {tm.message}
+                </p>
+              </div>
+
+              {/* Image and Name in a Single Line */}
+              <div className="flex flex-col items-center">
+                <Image
+                  src={tm.img}
+                  alt={tm.name}
+                  width={500}
+                  height={500}
+                  className="rounded-full object-cover w-20 h-20 mb-2"
+                />
+                <h3 className="text-center font-Helvetica text-lg text-darkBlue">
+                  {tm.name}
+                </h3>
+              </div>
             </div>
           </aside>
         );

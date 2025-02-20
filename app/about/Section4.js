@@ -58,7 +58,7 @@ export default function Section3() {
           <span className="text-gray-500">Upholding Standards</span>
         </h1>
         <p className="text-gray-600 text-sm md:text-xl leading-relaxed font-Helvetica">
-          SSL operates under the prestigious AD-II License issued by the Reserve
+          7Janpath forex operates under the prestigious AD-II License issued by the Reserve
           Bank of India, ensuring absolute adherence to the FEMA Act and
           maintaining the highest levels of regulatory compliance. Further, we
           have been authorized by the Reserve Bank of India to provide Inward

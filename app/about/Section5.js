@@ -43,7 +43,7 @@ export default function Section5() {
         <p className="text-gray-600 text-sm md:text-xl leading-relaxed font-Helvetica">
           As the Principal Agent for prominent overseas companies like
           MoneyGram, Western Union, and Continental Exchange Solutions, Inc.
-          (trading as RIA Money Transfer), SSL proudly extends its global reach
+          (trading as RIA Money Transfer), 7Janpath Forex proudly extends its global reach
           while nurturing strong local roots. These enduring partnerships
           exemplify our commitment to providing seamless and reliable
           international money transfer solutions to our esteemed patrons.

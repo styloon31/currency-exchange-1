@@ -58,13 +58,13 @@ export default function Section3() {
           <span className="text-gray-500">Strategic Collaborations</span>
         </h1>
         <p className="text-gray-600 text-sm md:text-xl leading-relaxed font-Helvetica">
-          SSL stands tall as a trusted partner to distinguished financial
+          7Janpath Forex stands tall as a trusted partner to distinguished financial
           institutions, including Axis Bank, ICICI Bank, Kotak Mahindra Bank,
           Punjab National Bank, HDFC Bank, IndusInd Bank, State Bank of India,
           Yes Bank, and SBM Bank India. These strategic alliances empower us to
           effectively cater to outward remittances and referral transactions,
           solidifying our position as a preferred choice for comprehensive
-          financial services. Join us at SSL, where expertise intertwines with
+          financial services. Join us at 7Janpath Forex, where expertise intertwines with
           innovation, and each transaction resonates with trust. Experience a
           world of seamless currency exchange and money transfer solutions,
           meticulously crafted to empower you in your financial journey.

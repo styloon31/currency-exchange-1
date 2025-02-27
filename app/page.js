@@ -1,6 +1,6 @@
+"use client";
 
-"use client"
-import Image from "next/image";
+import { useEffect, useState } from "react";
 import Hero from "./components/_sections/Hero";
 import Testimonials from "./components/Testimonials";
 import Third from "./components/_sections/Third";
@@ -12,23 +12,32 @@ import Customers from "./components/_sections/Customers";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import WhatsappButton from "./components/WhatsappButton";
-import { useEffect } from "react";
+import PopupModal from "./components/PopupModal"; // Import PopupModal
 import Lenis from "lenis";
 
 export default function Home() {
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
-    const lenis = new Lenis()
+    const lenis = new Lenis();
 
-    function raf(time){
-      lenis.raf(time)
-      requestAnimationFrame(raf)
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf)
-  },[])
+    requestAnimationFrame(raf);
 
-//
+    // Show popup after 5 seconds
+    const timer = setTimeout(() => {
+      setShowPopup(true);
+    }, 5000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
   return (
     <main className="relative min-h-screen w-screen overflow-x-hidden">
       <Navbar />
@@ -45,6 +54,9 @@ export default function Home() {
       <Seventh />
       <WhatsappButton />
       <Footer />
+
+      {/* Popup Modal */}
+      <PopupModal isOpen={showPopup}/>
     </main>
   );
 }

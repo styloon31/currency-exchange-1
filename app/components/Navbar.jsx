@@ -21,6 +21,7 @@ const Navbar = () => {
     { name: "HOME", href: "/", isActive: true },
     { name: "ABOUT", href: "about" },
     { name: "BLOG", href: "#" },
+    {name: "CONTACT", href: "/contact"}
   ];
 
   return (
@@ -89,12 +90,12 @@ const Navbar = () => {
 
           {/* Contact Button */}
           <motion.a
-            href="/contact"
+            href="/exchange-rates"
             className="hidden lg:flex items-center bg-gradient-to-r from-[#FC8E06] to-[#FEBC3E] text-white px-6 py-2 rounded-full font-medium text-sm hover:bg-blue-300 transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Contact
+            Live Exchange Rates
             <motion.svg
               className="w-4 h-4 ml-2"
               viewBox="0 0 24 24"
@@ -133,12 +134,12 @@ const Navbar = () => {
               </motion.a>
             ))}
             <motion.a
-              href="/contact"
+              href="/exchange-rates"
               className="block px-4 py-2 bg-darkBlue text-black rounded-lg text-center mt-4"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              Contact
+              Live Exchange Rates
             </motion.a>
           </div>
         </motion.div>

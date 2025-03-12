@@ -34,7 +34,7 @@ export default function Footer() {
               Have A Question?
             </h2>
             <div className="flex flex-col gap-2 items-start md:items-end">
-              <p className="text-base md:text-lg font-inter">+91- 9810474232</p>
+              <p className="text-base md:text-lg font-inter">+91- 8882382276</p>
               <p className="text-base md:text-lg font-inter">
                 info@7janpathforex.com
               </p>

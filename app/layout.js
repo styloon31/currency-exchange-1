@@ -7,14 +7,17 @@ export const metadata = {
   title: "Best Currency Exchange | 7Janpath Forex",
   description: "Get the best forex rates at 7Janpath Forex. Trusted currency exchange services with competitive rates and secure transactions.",
   keywords: "currency exchange, forex rates, best forex services, money exchange, foreign exchange, currency conversion",
+  verification: {
+    google: "79N4E9avxZABOYNhCk61X9spR7Vtvub5IHSz-kmFovg",
+  },
   openGraph: {
     title: "Best Currency Exchange | 7Janpath Forex",
     description: "Trusted currency exchange services with the best forex rates. Secure and fast foreign currency exchange solutions.",
-    url: "https://www.7janpathforex.com", // Update with your actual URL
+    url: "https://www.7janpathforex.com",
     type: "website",
     images: [
       {
-        url: "https://www.7janpathforex.com/logo.jpg", // Replace with actual OG image
+        url: "https://www.7janpathforex.com/logo.jpg",
         width: 1200,
         height: 630,
         alt: "7Janpath Forex - Best Currency Exchange",
@@ -23,7 +26,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@7JanpathForex", // Replace with actual Twitter handle
+    site: "@7JanpathForex",
     title: "Best Currency Exchange | 7Janpath Forex",
     description: "Find the best forex rates and reliable currency exchange services at 7Janpath Forex.",
     image: "https://www.7janpathforex.com/logo.jpg",
@@ -42,7 +45,7 @@ export default function RootLayout({ children }) {
           href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
           rel="stylesheet"
         />
-        <meta name="google-site-verification" content="79N4E9avxZABOYNhCk61X9spR7Vtvub5IHSz-kmFovg" />
+        {/* <meta name="google-site-verification" content="79N4E9avxZABOYNhCk61X9spR7Vtvub5IHSz-kmFovg" /> */}
       </Head>
 
       {/* Google Tag Manager */}

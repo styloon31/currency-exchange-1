@@ -34,11 +34,12 @@ export default function ContactSection() {
 
     try {
       await emailjs.send(
-        "service_l9s26yk",
-        "template_qjr445n",
+        "service_ehcbiso", // Replace with your EmailJS service ID
+        "template_cr8rxfq", // Replace with your EmailJS template ID
         templateParams,
-        "HP5OIGwzPCo7qJVbL"
+        "vvGN1-pLIvz-Gc4AQ" // Replace with your EmailJS user ID
       );
+
 
       Swal.fire({
         title: "Success!",

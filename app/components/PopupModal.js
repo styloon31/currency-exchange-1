@@ -73,10 +73,10 @@ export default function PopupModal() {
     try {
       // Send email using EmailJS
       await emailjs.send(
-        "service_ehcbiso", // Replace with your EmailJS service ID
-        "template_cr8rxfq", // Replace with your EmailJS template ID
+        "service_l9s26yk",
+        "template_qjr445n",
         templateParams,
-        "vvGN1-pLIvz-Gc4AQ" // Replace with your EmailJS user ID
+        "HP5OIGwzPCo7qJVbL"
       );
 
       // Show success alert
